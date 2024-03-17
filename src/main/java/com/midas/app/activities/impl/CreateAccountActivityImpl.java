@@ -12,9 +12,9 @@ import java.util.Optional;
 import java.util.UUID;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 @ActivityImpl(taskQueues = CreateAccountWorkflow.QUEUE_NAME)
 public class CreateAccountActivityImpl implements CreateAccountActivity {
   private final Logger logger = Workflow.getLogger(CreateAccountActivityImpl.class);
