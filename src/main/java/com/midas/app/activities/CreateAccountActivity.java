@@ -1,7 +1,6 @@
 package com.midas.app.activities;
 
 import com.midas.app.models.Account;
-import com.stripe.exception.StripeException;
 import io.temporal.activity.ActivityInterface;
 import io.temporal.activity.ActivityMethod;
 
@@ -14,5 +13,5 @@ public interface CreateAccountActivity extends AccountActivity {
    * @return Account
    */
   @ActivityMethod
-  Account createPaymentAccount(Account account) throws StripeException;
+  Account createPaymentAccount(Account account) throws Exception;
 }

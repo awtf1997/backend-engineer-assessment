@@ -1,7 +1,6 @@
 package com.midas.app.workflows;
 
 import com.midas.app.models.Account;
-import com.stripe.exception.StripeException;
 import io.temporal.workflow.WorkflowInterface;
 import io.temporal.workflow.WorkflowMethod;
 
@@ -17,5 +16,5 @@ public interface UpdateAccountWorkflow {
    * @return Account
    */
   @WorkflowMethod
-  Account updateAccount(Account details) throws IllegalArgumentException, StripeException;
+  Account updateAccount(Account details) throws Exception;
 }

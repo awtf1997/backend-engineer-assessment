@@ -6,7 +6,6 @@ import com.midas.app.providers.payment.CreateAccount;
 import com.midas.app.providers.payment.PaymentProvider;
 import com.midas.app.repositories.AccountRepository;
 import com.midas.app.workflows.CreateAccountWorkflow;
-import com.stripe.exception.StripeException;
 import io.temporal.spring.boot.ActivityImpl;
 import io.temporal.workflow.Workflow;
 import java.util.Optional;
@@ -35,7 +34,7 @@ public class CreateAccountActivityImpl implements CreateAccountActivity {
   }
 
   @Override
-  public Account createPaymentAccount(Account account) throws StripeException {
+  public Account createPaymentAccount(Account account) throws Exception {
     logger.info("Initiating createPaymentAccount() in CreateAccountActivityImpl");
     CreateAccount createAccount =
         CreateAccount.builder()

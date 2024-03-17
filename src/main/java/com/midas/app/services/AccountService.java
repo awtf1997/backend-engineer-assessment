@@ -1,7 +1,6 @@
 package com.midas.app.services;
 
 import com.midas.app.models.Account;
-import com.stripe.exception.StripeException;
 import java.util.List;
 
 public interface AccountService {
@@ -11,7 +10,7 @@ public interface AccountService {
    * @param details is the details of the account to be created.
    * @return Account
    */
-  Account createAccount(Account details) throws StripeException;
+  Account createAccount(Account details) throws Exception;
 
   /**
    * getAccounts returns a list of accounts.
@@ -26,5 +25,5 @@ public interface AccountService {
    * @param details is the details of the account to be created.
    * @return Account
    */
-  Account updateAccount(Account details) throws IllegalArgumentException, StripeException;
+  Account updateAccount(Account details) throws Exception;
 }

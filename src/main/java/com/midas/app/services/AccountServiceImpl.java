@@ -4,7 +4,6 @@ import com.midas.app.models.Account;
 import com.midas.app.repositories.AccountRepository;
 import com.midas.app.workflows.CreateAccountWorkflow;
 import com.midas.app.workflows.UpdateAccountWorkflow;
-import com.stripe.exception.StripeException;
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;
 import io.temporal.workflow.Workflow;
@@ -26,7 +25,7 @@ public class AccountServiceImpl implements AccountService {
    * @return Account
    */
   @Override
-  public Account createAccount(Account details) throws StripeException {
+  public Account createAccount(Account details) throws Exception {
     WorkflowOptions options =
         WorkflowOptions.newBuilder()
             .setTaskQueue(CreateAccountWorkflow.QUEUE_NAME)
@@ -55,7 +54,7 @@ public class AccountServiceImpl implements AccountService {
    * @return Account
    */
   @Override
-  public Account updateAccount(Account details) throws IllegalArgumentException, StripeException {
+  public Account updateAccount(Account details) throws Exception {
     WorkflowOptions options =
         WorkflowOptions.newBuilder()
             .setTaskQueue(UpdateAccountWorkflow.QUEUE_NAME)

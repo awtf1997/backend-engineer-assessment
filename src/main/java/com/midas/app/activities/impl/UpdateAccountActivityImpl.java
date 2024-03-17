@@ -6,7 +6,6 @@ import com.midas.app.providers.payment.PaymentProvider;
 import com.midas.app.providers.payment.UpdateAccount;
 import com.midas.app.repositories.AccountRepository;
 import com.midas.app.workflows.UpdateAccountWorkflow;
-import com.stripe.exception.StripeException;
 import io.temporal.spring.boot.ActivityImpl;
 import io.temporal.workflow.Workflow;
 import java.util.Optional;
@@ -35,7 +34,7 @@ public class UpdateAccountActivityImpl implements UpdateAccountActivity {
   }
 
   @Override
-  public Account updatePaymentAccount(Account account) throws StripeException {
+  public Account updatePaymentAccount(Account account) throws Exception {
     logger.info("Initiating updatePaymentAccount() in UpdateAccountActivityImpl");
     UpdateAccount updateAccount =
         UpdateAccount.builder()
