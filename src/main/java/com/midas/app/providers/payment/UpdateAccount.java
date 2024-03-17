@@ -7,8 +7,8 @@ import lombok.*;
 @Setter
 @Getter
 @Builder
-public class CreateAccount {
-  private String userId;
+public class UpdateAccount {
+  private String providerAccountId;
   private String firstName;
   private String lastName;
   private String email;
