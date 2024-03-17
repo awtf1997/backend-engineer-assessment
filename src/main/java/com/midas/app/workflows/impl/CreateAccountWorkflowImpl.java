@@ -9,6 +9,7 @@ import io.temporal.spring.boot.WorkflowImpl;
 import io.temporal.workflow.Workflow;
 import java.time.Duration;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @WorkflowImpl(taskQueues = CreateAccountWorkflow.QUEUE_NAME)
 public class CreateAccountWorkflowImpl implements CreateAccountWorkflow {
