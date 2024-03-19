@@ -25,14 +25,14 @@ public class CreateAccountWorkflowImpl implements CreateAccountWorkflow {
           .setStartToCloseTimeout(Duration.ofSeconds(30))
           .setRetryOptions(retryoptions)
           .build();
-  private final CreateAccountActivity account =
+  private final CreateAccountActivity activity =
       Workflow.newActivityStub(CreateAccountActivity.class, defaultActivityOptions);
 
   @Override
   public Account createAccount(Account details) throws Exception {
     logger.info("Initiating createAccount() in CreateAccountWorkFlowImpl");
-    details = account.createPaymentAccount(details);
-    details = account.saveAccount(details);
+    details = activity.createPaymentAccount(details);
+    details = activity.saveAccount(details);
     logger.info("Exiting createAccount() in CreateAccountWorkFlowImpl");
     return details;
   }

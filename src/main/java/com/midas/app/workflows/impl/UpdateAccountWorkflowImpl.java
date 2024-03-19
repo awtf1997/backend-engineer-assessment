@@ -26,20 +26,20 @@ public class UpdateAccountWorkflowImpl implements UpdateAccountWorkflow {
           .setStartToCloseTimeout(Duration.ofSeconds(30))
           .setRetryOptions(retryoptions)
           .build();
-  private final UpdateAccountActivity account =
+  private final UpdateAccountActivity activity =
       Workflow.newActivityStub(UpdateAccountActivity.class, defaultActivityOptions);
 
   @Override
   public Account updateAccount(Account details) throws Exception {
     logger.info("Initiating updateAccount() in UpdateAccountWorkflowImpl");
-    Optional<Account> existingAccountOpt = account.getAccount(details.getId());
+    Optional<Account> existingAccountOpt = activity.getAccount(details.getId());
     if (existingAccountOpt.isEmpty())
       throw new IllegalArgumentException("No such User Account exists");
     Account existingAccount = existingAccountOpt.get();
     details.setProvider(existingAccount.getProvider());
     details.setProviderAccountId(existingAccount.getProviderAccountId());
-    details = account.updatePaymentAccount(details);
-    details = account.saveAccount(details);
+    details = activity.updatePaymentAccount(details);
+    details = activity.saveAccount(details);
     logger.info("Exiting updateAccount() in UpdateAccountWorkflowImpl");
     return details;
   }
